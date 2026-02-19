@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int countBinarySubstrings(string s) {
+        int n = s.size();
+        if(n==1) return 0;
+        int countZeros = 0, countOnes = 0;
+        int result = 0;
+
+        if(s[0]=='0') countZeros++;
+        else countOnes++;
+
+        for(int i=1; i<n; i++){
+            if(s[i]==s[i-1]){
+                if(s[i]=='0') countZeros++;
+                else countOnes++;
+            }else{
+                result += min(countZeros, countOnes);
+                if(s[i]=='0') countZeros=1;
+                else countOnes = 1;
+            }
+        }
+        result += min(countZeros, countOnes);
+
+        return result;
+        
+    }
+};
