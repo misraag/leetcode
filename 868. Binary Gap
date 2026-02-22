@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int binaryGap(int n) {
+        int bits = __builtin_popcount(n);
+        int last = -1;
+        int diff = 0;
+        while(n>0){
+            int bit = n&1;
+            n>>=1;
+            cout<<bit<<" ";
+            // int last = 0;
+            if(bit==1 && last==-1){
+                last = 0;
+            } else if(bit==1){
+                last++;
+                cout<<"Last is "<<last<<" ";
+                diff = max(diff, last);
+                last = 0;
+            } else if(last!=-1){
+                last++;
+            }
+        }
+        return diff;
+    }
+};
