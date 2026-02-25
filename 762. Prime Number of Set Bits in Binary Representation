@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int countPrimeSetBits(int left, int right) {
+        set<int> s = {2, 3, 5, 7, 11, 13, 17, 19};
+        int result = 0;
+
+        for(int i=left; i<=right; i++){
+            int bitCount = __builtin_popcount(i);
+            if(s.find(bitCount)!=s.end()) {
+                result++;
+            }
+        }
+        return result;
+        
+    }
+};
